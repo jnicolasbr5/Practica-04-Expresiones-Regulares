@@ -7,7 +7,7 @@
 // Autor: Juan Nicolás Becerra Rogatinscaia
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
-// Descripción Clase Regex:
+// Descripción Clase Estructura:
 // Representa un alfabeto que contiene símbolos.
 // Verifica si una cadena está formada por los símbolos del alfabeto
 // Estructura de datos principal:
@@ -47,6 +47,11 @@ struct InicioFinDescripcion {
   int final;
 };
 
+struct DatosComentarioLargo {
+  int inicio;
+  int final;
+};
+
 class Estructura {
   private:
     std::string nombre_programa_;
@@ -54,6 +59,7 @@ class Estructura {
     std::vector<DatosBucle> bucles_;
     std::vector<DatosVariable> variables_;
     std::vector<DatosComentario> comentarios_;
+    std::vector<DatosComentarioLargo> comentarios_largos_;
     InicioFinDescripcion valores_;
     bool main_;
 
@@ -67,6 +73,7 @@ class Estructura {
     void PushComentario(DatosComentario data) {comentarios_.push_back(data);}
     void PushDescripcion(std::string linea) {descripcion_.push_back(linea);}
     void SetLongitudDescripcion(int x, int y) {valores_ = {x, y};}
+    void PushLongitudComentarios(int x, int y) {comentarios_largos_.push_back({x, y});}
     void SetMain(bool condicion) {main_ = condicion;}
 };
 

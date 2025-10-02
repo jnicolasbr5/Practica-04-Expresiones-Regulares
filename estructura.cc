@@ -12,6 +12,7 @@
 
 #include "estructura.h"
 
+// Muestra por pantalla la estructura general del código
 void Estructura::Write(std::ostream& os) const {
   os << "PROGRAMM: " << nombre_programa_ << std::endl;
   os << "DESCRIPTION:" << std::endl;
@@ -37,6 +38,10 @@ void Estructura::Write(std::ostream& os) const {
   os << "\nCOMMENTS:" << std::endl;
   if (!descripcion_.empty()) {
     os << "[Line " << valores_.inicio << "-" << valores_.final << "] DESCRIPTION" << std::endl;
+  }
+  for (size_t i = 0; i < comentarios_largos_.size(); i++) {
+    os << "[Line " << comentarios_largos_[i].inicio << "-" << comentarios_largos_[i].final
+       << "] COMMENT" << std::endl; 
   }
   for (size_t i = 0; i < comentarios_.size(); i++) {
     os << "[Line " << comentarios_[i].linea << "] " << comentarios_[i].comentario << std::endl; 

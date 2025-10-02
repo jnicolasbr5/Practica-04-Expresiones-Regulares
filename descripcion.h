@@ -21,7 +21,7 @@ class Description {
     std::regex patron_;
 
   public:
-    Description() : patron_(R"((^\s*/\*\*.*$)|(^\s*\*.*$)|(^\s*\*/))") {}
+    Description() : patron_(R"((^\s*/\*\**.*$)|(^\s*\*[^/].*$)|(^\s*\*/))") {}
     void BuscarDescripcion(std::ifstream& archivo_ent, Estructura& est, int i = 1);
   };
 			/** */

@@ -31,6 +31,6 @@ class Comments {
     std::regex patron_;
 
   public:
-    Comments() : patron_(R"(//\s.*$)") {}
+    Comments() : patron_(R"(//\s+.*$)") {}
     void BuscarComentarios(std::ifstream& archivo_ent, Estructura& est, int i = 1);
 };

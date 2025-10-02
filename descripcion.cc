@@ -17,20 +17,29 @@
 
 void Description::BuscarDescripcion(std::ifstream& archivo_ent, Estructura& est, int i) {
 	int inicio, final;
-	bool comprobar_descripcion = false;
   std::string linea;
+	bool descripcion_detectada = false;
 	while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
-		if(std::regex_search(linea, coincidencia, patron_)){
-			comprobar_descripcion = true;
-			est.PushDescripcion(coincidencia[0].str());
-			if (coincidencia[1].matched) {
-				inicio = i;
-			}	else if (coincidencia[3].matched) {
-				final = i;
+		if (std::regex_search(linea, coincidencia, patron_)){
+			if (!descripcion_detectada) {	
+				est.PushDescripcion(coincidencia[0].str());
+				if (coincidencia[1].matched) {
+					inicio = i;
+				}	else if (coincidencia[3].matched) {
+					final = i;
+					est.SetLongitudDescripcion(inicio, final);
+					descripcion_detectada = true;
+				}
+			} else {
+				if (coincidencia[1].matched) {
+					inicio = i;
+				}	else if (coincidencia[3].matched) {
+					final = i;
+					est.PushLongitudComentarios(inicio, final);
+				}
 			}
 		}	
 		i++;
-	}
-	if (comprobar_descripcion) est.SetLongitudDescripcion(inicio, final);
+	}	
 }
