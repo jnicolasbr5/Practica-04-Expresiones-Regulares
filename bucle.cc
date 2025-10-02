@@ -26,9 +26,10 @@
 #include "bucle.h"
 
 void Statement::BuscarBucles(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i) {
-  while(std::getline(archivo_ent, linea_)) {
+  std::string linea;
+	while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
-		if(std::regex_search(linea_, coincidencia, patron_)){
+		if(std::regex_search(linea, coincidencia, patron_)){
 			archivo_sal << "[Line " << i << "] LOOP: " << coincidencia[1] << std::endl;
 		}
 		i++;

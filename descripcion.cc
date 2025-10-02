@@ -8,25 +8,26 @@
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
 
-
 #include <fstream>
 #include <iostream>
 #include <regex>
 #include <string>
 
-#include "variable.h"
+#include "descripcion.h"
 
-void Variable::BuscarVariables(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i) {
-	std::string linea;
-  while(std::getline(archivo_ent, linea)) {
+void Description::BuscarDescripcion(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i) {
+  std::string linea;
+	while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
 		if(std::regex_search(linea, coincidencia, patron_)){
-			archivo_sal << "[Line " << i << "] " << coincidencia[1] << ": " << coincidencia[2];		
-		if (coincidencia[3].matched) {
-			archivo_sal << " = " << coincidencia[3];
-		}
-		archivo_sal << std::endl;
-		}
+			archivo_sal << coincidencia[0] << std::endl;
+			if (coincidencia[1].matched) {
+				inicio_descripcion_ = i;
+			}	else if (coincidencia[2].matched) {
+				final_descripcion_ = i;
+			}
+		}	
 		i++;
 	}
+	
 }

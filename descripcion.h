@@ -12,11 +12,18 @@
 #include <regex>
 #include <string>
 
-class Statement {
+
+class Description {
   private:
     std::regex patron_;
+    int inicio_descripcion_;
+    int final_descripcion_;
 
   public:
-    Statement() : patron_(R"(\s*(for|while)\s*\([^\)]*\))") {}
-    void BuscarBucles(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i = 1);
-};
+    Description() : patron_(R"((^\s*/\*\*.*$)|(^\s*\*.*$)|(^\s*\*/))") {}
+    void BuscarDescripcion(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i = 1);
+    int GetInicio() const {return inicio_descripcion_;}
+    int GetFinal() const {return final_descripcion_;}
+  };
+			/** */
+   //   ^\/\*(\s*\S*)*\*\/$

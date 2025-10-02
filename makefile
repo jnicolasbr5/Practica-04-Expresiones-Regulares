@@ -2,7 +2,7 @@ PROGRAMA = p04_regular_expressions
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -g
 
-SOURCES = main.cc bucle.cc 
+SOURCES = p04_reg.cc bucle.cc variable.cc main.cc comment.cc descripcion.cc
 OBJECTS = $(SOURCES:.cc=.o)
 
 all: $(PROGRAMA)

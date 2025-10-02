@@ -1,5 +1,15 @@
+/**
+* Universidad de La Laguna
+* Escuela Superior de Ingenieria y Tecnologia
+* Informatica Basica
+*
+* @brief Ejercicios de programacion
+* Version 1: Funcion factorial
+*
+* @see https ://github .com /IB -2023 -2024/ IB -class -code - examples /
+*/
 # include <iostream>
- # include <cassert>
+# include <cassert>
 // Returns the factorial of the argument
 int Factorial (int number ) {
 switch ( number ) {

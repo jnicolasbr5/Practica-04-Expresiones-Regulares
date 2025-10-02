@@ -25,9 +25,9 @@
 class Variable {
   private:
     std::regex patron_;
-    std::string linea_;
+		int rsa = 32;
 
   public:
-    Variable() : patron_(R"((int|double)\s[a-z]+(\d+|\d+\.\d+)?;)") {}
+    Variable() : patron_(R"(^\s*(int|double)\s+([a-z]+)\s*=?\s*([0-9]+|[0-9]+\.[0-9]+)?\s*;)") {}
     void BuscarVariables(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i = 1);
 };

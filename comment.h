@@ -9,19 +9,14 @@
 // Fecha: 07/10/2025
 
 #include <fstream>
-#include <iostream>
 #include <regex>
 #include <string>
 
-#include "main.h"
+class Comments {
+  private:
+    std::regex patron_;
 
-void Main::BuscarMain(std::ifstream& archivo_ent, std::ofstream& archivo_sal) {
-  std::string linea;
-	while(std::getline(archivo_ent, linea)) {
-		if(std::regex_match(linea, patron_)){
-			archivo_sal << "True" << std::endl;
-			return;
-		}
-	}
-	archivo_sal << "False" << std::endl;
-}
+  public:
+    Comments() : patron_(R"(//\s.*$)") {}
+    void BuscarComentarios(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i = 1);
+};
