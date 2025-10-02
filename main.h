@@ -7,12 +7,14 @@
 // Autor: Juan Nicolás Becerra Rogatinscaia
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
+// Descripción Clase Main:
+// Representa una expresión regular de la función int main.
+// Verifica si el código contiene la funcion main y lo almacena
 
 #pragma once 
 
 #include <fstream>
 #include <regex>
-#include <string>
 
 #include "estructura.h"
 

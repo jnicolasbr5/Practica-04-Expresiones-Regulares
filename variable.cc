@@ -10,21 +10,21 @@
 
 
 #include <fstream>
-#include <iostream>
 #include <regex>
 #include <string>
 
 #include "estructura.h"
 #include "variable.h"
 
+// Detecta variables y las almacena en Estructura
 void Variable::BuscarVariables(std::ifstream& archivo_ent, Estructura& est, int i) {
 	std::string linea;
   while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
 		if(std::regex_search(linea, coincidencia, patron_)){
-			if (coincidencia[3].matched) {
+			if (coincidencia[3].matched) { // Si tiene valor, lo añade
 				est.PushVariable(DatosVariable{i, coincidencia[1], coincidencia[2], coincidencia[3]});
-			} else {
+			} else { // Si no, solo almacena nº de linea, tipo de dato y nombre
 				est.PushVariable(DatosVariable{i, coincidencia[1], coincidencia[2]});
 			}
 		}

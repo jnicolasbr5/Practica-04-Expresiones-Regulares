@@ -9,12 +9,13 @@
 // Fecha: 07/10/2025
 
 #include <fstream>
-#include <iostream>
 #include <regex>
 #include <string>
 
 #include "descripcion.h"
+#include "estructura.h"
 
+// Verifica que el codigo tiene descripcion y/o comentarios de varias lineas
 void Description::BuscarDescripcion(std::ifstream& archivo_ent, Estructura& est, int i) {
 	int inicio, final;
   std::string linea;
@@ -22,21 +23,21 @@ void Description::BuscarDescripcion(std::ifstream& archivo_ent, Estructura& est,
 	while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
 		if (std::regex_search(linea, coincidencia, patron_)){
-			if (!descripcion_detectada) {	
+			if (!descripcion_detectada) {	// Almacena la descripcion
 				est.PushDescripcion(coincidencia[0].str());
 				if (coincidencia[1].matched) {
 					inicio = i;
 				}	else if (coincidencia[3].matched) {
 					final = i;
-					est.SetLongitudDescripcion(inicio, final);
+					est.SetLongitudDescripcion(inicio, final); // Longitud
 					descripcion_detectada = true;
 				}
-			} else {
+			} else { // Almacena comentarios de multiples lineas
 				if (coincidencia[1].matched) {
 					inicio = i;
 				}	else if (coincidencia[3].matched) {
 					final = i;
-					est.PushLongitudComentarios(inicio, final);
+					est.PushLongitudComentarios(inicio, final); // Longitud
 				}
 			}
 		}	

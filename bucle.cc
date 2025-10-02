@@ -10,13 +10,13 @@
 
 
 #include <fstream>
-#include <iostream>
 #include <regex>
 #include <string>
 
 #include "bucle.h"
 #include "estructura.h"
 
+// Detecta bucles y los almacena en Estructura
 void Statement::BuscarBucles(std::ifstream& archivo_ent, Estructura& est, int i) {
   std::string linea;
 	while(std::getline(archivo_ent, linea)) {

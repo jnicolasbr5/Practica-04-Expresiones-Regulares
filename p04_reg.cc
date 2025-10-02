@@ -7,52 +7,44 @@
 // Autor: Juan Nicolás Becerra Rogatinscaia
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
-
-// Archivo cya-P02-strings.cc: programa cliente.
+// Archivo p04_reg.cc: programa cliente.
 // Función main del proyecto:
-// Usa las clases Alfabeto, Cadena y Lenguaje para:
-// Leer datos por un archivo de entrada, realizar las operaciones
-// deseadas, y escribir los resultados en un archivo de salida.
+// Usa las clases Statement, Comment, Description, Main y Variable
+// Que contienen expresiones regulares y detectan coincidencias en el código de entrada
+// Para almacenarlas en la clase Estructura y posteriormente mostrar
+// La estructura general del código en un archivo de salida
 // Referencias:
 // Regex -> https://learn.microsoft.com/es-es/cpp/standard-library/regex-functions?view=msvc-170
 // Smatch -> https://www.geeksforgeeks.org/cpp/smatch-regex-regular-expressions-in-c/
-// static const regex -> https://stackoverflow.com/questions/51396538/is-it-good-idea-to-make-stdregex-static
+// Struct -> https://www.w3schools.com/cpp/cpp_structs.asp
 // Historial de revisiones:
-// Main -> https://github.com/jnicolasbr5/Practica-02-Cadenas-y-lenguajes
-// 30/09/2025 - Creación (primera versión) del código 
-// -> https://github.com/jnicolasbr5/Practica-02-Cadenas-y-lenguajes/tree/dia1
-// 01/10/2025 - Segunda versión del código -> 
+// 01/10/2025 - Primera versión del código -> 
 // https://github.com/jnicolasbr5/Practica-02-Cadenas-y-lenguajes/tree/dia2
-// 02/09/2025 - Tercera versión del código -> 
+// 02/09/2025 - Segunda versión del código -> 
 // https://github.com/jnicolasbr5/Practica-02-Cadenas-y-lenguajes/tree/dia3
-// ./p02_strings filein.txt fileout.txt codigo_operacion
+
 
 #include <fstream>
 #include <iostream>
 #include <regex>
 #include <string>
 
-#include "estructura.h"
 #include "bucle.h"
 #include "comment.h"
 #include "descripcion.h"
+#include "estructura.h"
 #include "main.h"
 #include "variable.h"
 
-//./ p04_code_analyzer code.cc codescheme.txt
-
-
-// regex_match -> comprueba si la cadena verifica con el patron
-// regex_search -> busca si alguna parte coincide
-// regex_replace -> devuelve cadena modificada
-
 void MostrarError() {
-	std::cerr << "Error" << std::endl;
+	std::cerr << "Error de parámetros" << std::endl;
+	std::cerr << "Modo de uso: ./p04.reg codigo.cc archivo_salida.txt" << std::endl;
 }
 
+// Reinicia la lectura de un archivo
 void ReiniciarArchivo(std::ifstream& archivo_ent) {
-	archivo_ent.clear();
-	archivo_ent.seekg(0, std::ios::beg);
+	archivo_ent.clear(); // Limpia los errores
+	archivo_ent.seekg(0, std::ios::beg); // Vuelve a apuntar al inicio del archivo
 }
 
 int main (int argc, char* argv[]) {
@@ -70,9 +62,9 @@ int main (int argc, char* argv[]) {
 		std::cerr << "El archivo de salida no pudo ser abierto" << std::endl;
 		return 1;
 	}
-	std::string nombre_archivo_ = argv[1];
+	std::string nombre_archivo = argv[1];
 	Estructura estructura;
-	estructura.SetPrograma(nombre_archivo_);
+	estructura.SetPrograma(nombre_archivo);
 	Description descr;
 	descr.BuscarDescripcion(archivo_entrada, estructura);
 	ReiniciarArchivo(archivo_entrada);

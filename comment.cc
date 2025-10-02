@@ -9,12 +9,13 @@
 // Fecha: 07/10/2025
 
 #include <fstream>
-#include <iostream>
 #include <regex>
 #include <string>
 
 #include "comment.h"
+#include "estructura.h"
 
+// Verifica si el código contiene comentarios y los almacena en Estructura
 void Comments::BuscarComentarios(std::ifstream& archivo_ent, Estructura& est, int i) {
   std::string linea;
 	while(std::getline(archivo_ent, linea)) {

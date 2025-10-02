@@ -14,7 +14,7 @@
 
 // Muestra por pantalla la estructura general del código
 void Estructura::Write(std::ostream& os) const {
-  os << "PROGRAMM: " << nombre_programa_ << std::endl;
+  os << "PROGRAM: " << nombre_programa_ << std::endl;
   os << "DESCRIPTION:" << std::endl;
   for (size_t i = 0; i < descripcion_.size(); i++) {
     os << descripcion_[i] << std::endl;
@@ -36,7 +36,7 @@ void Estructura::Write(std::ostream& os) const {
   if (main_) os << "True" << std::endl;
   else os << "False" << std::endl;
   os << "\nCOMMENTS:" << std::endl;
-  if (!descripcion_.empty()) {
+  if (!descripcion_.empty()) { // si hay descripción, la muestra
     os << "[Line " << valores_.inicio << "-" << valores_.final << "] DESCRIPTION" << std::endl;
   }
   for (size_t i = 0; i < comentarios_largos_.size(); i++) {

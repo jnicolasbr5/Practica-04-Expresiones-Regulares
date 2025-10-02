@@ -1,4 +1,4 @@
-PROGRAMM: codefibo.cc
+PROGRAM: codefibo.cc
 DESCRIPTION:
 /**
  * Universidad de La Laguna

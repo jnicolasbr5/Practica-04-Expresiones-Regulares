@@ -8,28 +8,25 @@
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
 // Descripción Clase Estructura:
-// Representa un alfabeto que contiene símbolos.
-// Verifica si una cadena está formada por los símbolos del alfabeto
+// Representa la estructura general de un código
 // Estructura de datos principal:
-// - std::set<char> - almacena símbolos de manera ordenada
-// Historial de modificaciones:
-// Bug fix 1 - Corregida la llamada de funciones en sobrecargas.
-// Bug fix 2 - Añado IsEmpty() para vaciar el alfabeto al añadir uno nuevo.
-// Bug fix 3 - ComprobarAlfabetoCadena() verifica que los símbolos de las
-//             cadenas existen en el alfabeto
+// - struct - Almacena datos de las características del código
+// - std::vector<std::string> - Almacena las lineas de la descripción
+// - std::vector<struct> - Almacena structs que contienen datos del código
 
 #pragma once
 
-#include <fstream>
 #include <regex>
 #include <string>
 #include <vector>
 
+// Almacena el número de linea y el tipo de bucle
 struct DatosBucle {
   int linea;
   std::string tipo;
 };
 
+// Almacena el número de linea, tipo de dato, nombre y valor de una variable
 struct DatosVariable {
   int linea;
   std::string tipo;
@@ -37,16 +34,19 @@ struct DatosVariable {
   std::string valor = "";
 };
 
+// Almacena el número de linea y el comentario
 struct DatosComentario {
   int linea;
   std::string comentario;
 };
 
+// Primera y ultima linea de la descripcion
 struct InicioFinDescripcion {
   int inicio;
   int final;
 };
 
+// Primera y ultima linea de los comentarios de varias lineas
 struct DatosComentarioLargo {
   int inicio;
   int final;
@@ -66,15 +66,18 @@ class Estructura {
   public:
     void Write(std::ostream& os) const;
 
-    // Set, Get y Push
+    // Sets
     void SetPrograma(std::string& nombre) {nombre_programa_ = nombre;};
+    void SetLongitudDescripcion(int x, int y) {valores_ = {x, y};}
+    void SetMain(bool condicion) {main_ = condicion;}
+
+    // Push´s
     void PushBucle(DatosBucle data) {bucles_.push_back(data);}
     void PushVariable(DatosVariable data) {variables_.push_back(data);}
     void PushComentario(DatosComentario data) {comentarios_.push_back(data);}
     void PushDescripcion(std::string linea) {descripcion_.push_back(linea);}
-    void SetLongitudDescripcion(int x, int y) {valores_ = {x, y};}
-    void PushLongitudComentarios(int x, int y) {comentarios_largos_.push_back({x, y});}
-    void SetMain(bool condicion) {main_ = condicion;}
+    void PushLongitudComentarios(int x, int y) {comentarios_largos_.push_back({x, y});}  
 };
 
+// Sobrecarga de operador
 std::ostream& operator<<(std::ostream& os, const Estructura& aux);

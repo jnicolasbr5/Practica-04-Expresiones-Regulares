@@ -9,12 +9,13 @@
 // Fecha: 07/10/2025
 
 #include <fstream>
-#include <iostream>
 #include <regex>
 #include <string>
 
+#include "estructura.h"
 #include "main.h"
 
+// Verifica si el código tiene la función main y almacena un booleano
 void Main::BuscarMain(std::ifstream& archivo_ent, Estructura& est) {
   std::string linea;
 	while(std::getline(archivo_ent, linea)) {
