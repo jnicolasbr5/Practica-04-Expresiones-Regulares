@@ -19,9 +19,9 @@
 // Struct -> https://www.w3schools.com/cpp/cpp_structs.asp
 // Historial de revisiones:
 // 01/10/2025 - Primera versión del código -> 
-// https://github.com/jnicolasbr5/Practica-02-Cadenas-y-lenguajes/tree/dia2
+// https://github.com/jnicolasbr5/Practica-04-Expresiones-Regulares/tree/dia2
 // 02/09/2025 - Segunda versión del código -> 
-// https://github.com/jnicolasbr5/Practica-02-Cadenas-y-lenguajes/tree/dia3
+// https://github.com/jnicolasbr5/Practica-04-Expresiones-Regulares/tree/dia3
 
 
 #include <fstream>
