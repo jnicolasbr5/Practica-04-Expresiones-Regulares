@@ -15,13 +15,13 @@
 
 #include "main.h"
 
-void Main::BuscarMain(std::ifstream& archivo_ent, std::ofstream& archivo_sal) {
+void Main::BuscarMain(std::ifstream& archivo_ent, Estructura& est) {
   std::string linea;
 	while(std::getline(archivo_ent, linea)) {
 		if(std::regex_match(linea, patron_)){
-			archivo_sal << "True" << std::endl;
+			est.SetMain(true);
 			return;
 		}
 	}
-	archivo_sal << "False" << std::endl;
+	est.SetMain(false);
 }

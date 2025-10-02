@@ -32,6 +32,7 @@
 #include <regex>
 #include <string>
 
+#include "estructura.h"
 #include "bucle.h"
 #include "comment.h"
 #include "descripcion.h"
@@ -56,7 +57,7 @@ void ReiniciarArchivo(std::ifstream& archivo_ent) {
 
 int main (int argc, char* argv[]) {
 	if (argc != 3) {
-		//MostrarError();
+		MostrarError();
 		return 1;
   }	
 	std::ifstream archivo_entrada(argv[1]);
@@ -69,30 +70,23 @@ int main (int argc, char* argv[]) {
 		std::cerr << "El archivo de salida no pudo ser abierto" << std::endl;
 		return 1;
 	}
-	Statement bucle;
-	archivo_salida << "PROGRAM: " << argv[1] << std::endl;
+	std::string nombre_archivo_ = argv[1];
+	Estructura estructura;
+	estructura.SetPrograma(nombre_archivo_);
 	Description descr;
-	archivo_salida << "DESCRIPTION: " << std::endl;
-	descr.BuscarDescripcion(archivo_entrada, archivo_salida);
+	descr.BuscarDescripcion(archivo_entrada, estructura);
 	ReiniciarArchivo(archivo_entrada);
   Variable var;
-	archivo_salida << "\nVARIABLES: " << std::endl;
-	var.BuscarVariables(archivo_entrada, archivo_salida);
+	var.BuscarVariables(archivo_entrada, estructura);
 	ReiniciarArchivo(archivo_entrada);
-	archivo_salida << "\nSTATEMENTS: " << std::endl;
-	bucle.BuscarBucles(archivo_entrada, archivo_salida);
+	Statement bucle;
+	bucle.BuscarBucles(archivo_entrada, estructura);
 	ReiniciarArchivo(archivo_entrada);
 	Main main;
-	archivo_salida << "\nMAIN: " << std::endl;
-	main.BuscarMain(archivo_entrada, archivo_salida);
+	main.BuscarMain(archivo_entrada, estructura);
 	ReiniciarArchivo(archivo_entrada);
 	Comments comentario;
-	archivo_salida << "\nCOMMENTS: " << std::endl;
-	archivo_salida << "Line [" << descr.GetInicio() << " - " << descr.GetFinal()
-								<< "] DESCRIPTION" <<std::endl;
-	comentario.BuscarComentarios(archivo_entrada, archivo_salida);
+	comentario.BuscarComentarios(archivo_entrada, estructura);
+	archivo_salida << estructura << std::endl;
 	return 0;
 }
-
-
-

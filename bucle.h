@@ -8,9 +8,13 @@
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
 
+#pragma once
+
 #include <fstream>
 #include <regex>
 #include <string>
+
+#include "estructura.h"
 
 class Statement {
   private:
@@ -18,5 +22,5 @@ class Statement {
 
   public:
     Statement() : patron_(R"(\s*(for|while)\s*\([^\)]*\))") {}
-    void BuscarBucles(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i = 1);
+    void BuscarBucles(std::ifstream& archivo_ent, Estructura& est, int i = 1);
 };

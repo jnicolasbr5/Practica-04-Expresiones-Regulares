@@ -8,22 +8,21 @@
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
 
+#pragma once
+
 #include <fstream>
 #include <regex>
 #include <string>
 
+#include "estructura.h"
 
 class Description {
   private:
     std::regex patron_;
-    int inicio_descripcion_;
-    int final_descripcion_;
 
   public:
     Description() : patron_(R"((^\s*/\*\*.*$)|(^\s*\*.*$)|(^\s*\*/))") {}
-    void BuscarDescripcion(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i = 1);
-    int GetInicio() const {return inicio_descripcion_;}
-    int GetFinal() const {return final_descripcion_;}
+    void BuscarDescripcion(std::ifstream& archivo_ent, Estructura& est, int i = 1);
   };
 			/** */
    //   ^\/\*(\s*\S*)*\*\/$

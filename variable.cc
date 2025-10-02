@@ -14,18 +14,19 @@
 #include <regex>
 #include <string>
 
+#include "estructura.h"
 #include "variable.h"
 
-void Variable::BuscarVariables(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i) {
+void Variable::BuscarVariables(std::ifstream& archivo_ent, Estructura& est, int i) {
 	std::string linea;
   while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
 		if(std::regex_search(linea, coincidencia, patron_)){
-			archivo_sal << "[Line " << i << "] " << coincidencia[1] << ": " << coincidencia[2];		
-		if (coincidencia[3].matched) {
-			archivo_sal << " = " << coincidencia[3];
-		}
-		archivo_sal << std::endl;
+			if (coincidencia[3].matched) {
+				est.PushVariable(DatosVariable{i, coincidencia[1], coincidencia[2], coincidencia[3]});
+			} else {
+				est.PushVariable(DatosVariable{i, coincidencia[1], coincidencia[2]});
+			}
 		}
 		i++;
 	}

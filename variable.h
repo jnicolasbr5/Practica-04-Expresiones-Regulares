@@ -18,16 +18,19 @@
 // Bug fix 3 - ComprobarAlfabetoCadena() verifica que los símbolos de las
 //             cadenas existen en el alfabeto
 
+#pragma once
+
 #include <fstream>
 #include <regex>
 #include <string>
 
+#include "estructura.h"
+
 class Variable {
   private:
     std::regex patron_;
-		int rsa = 32;
 
   public:
-    Variable() : patron_(R"(^\s*(int|double)\s+([a-z]+)\s*=?\s*([0-9]+|[0-9]+\.[0-9]+)?\s*;)") {}
-    void BuscarVariables(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i = 1);
+    Variable() : patron_(R"(^\s*(int|double)\s+([a-z_]+)\s*=?\s*([0-9]+|[0-9]+\.[0-9]+)?\s*;)") {}
+    void BuscarVariables(std::ifstream& archivo_ent, Estructura& est, int i = 1);
 };

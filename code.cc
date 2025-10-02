@@ -8,6 +8,8 @@
 *
 * @see https ://github .com /IB -2023 -2024/ IB -class -code - examples /
 */
+
+
 # include <iostream>
 # include <cassert>
 // Returns the factorial of the argument

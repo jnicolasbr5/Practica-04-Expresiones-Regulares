@@ -15,12 +15,12 @@
 
 #include "comment.h"
 
-void Comments::BuscarComentarios(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i) {
+void Comments::BuscarComentarios(std::ifstream& archivo_ent, Estructura& est, int i) {
   std::string linea;
 	while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
 		if(std::regex_search(linea, coincidencia, patron_)){
-			archivo_sal << "[Line " << i << "] " << coincidencia[0] << std::endl;
+			est.PushComentario(DatosComentario{i, coincidencia[0]});
 		}	
 		i++;
 	}

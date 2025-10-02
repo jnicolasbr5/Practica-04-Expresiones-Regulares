@@ -15,19 +15,22 @@
 
 #include "descripcion.h"
 
-void Description::BuscarDescripcion(std::ifstream& archivo_ent, std::ofstream& archivo_sal, int i) {
+void Description::BuscarDescripcion(std::ifstream& archivo_ent, Estructura& est, int i) {
+	int inicio, final;
+	bool comprobar_descripcion = false;
   std::string linea;
 	while(std::getline(archivo_ent, linea)) {
 		std::smatch coincidencia;
 		if(std::regex_search(linea, coincidencia, patron_)){
-			archivo_sal << coincidencia[0] << std::endl;
+			comprobar_descripcion = true;
+			est.PushDescripcion(coincidencia[0].str());
 			if (coincidencia[1].matched) {
-				inicio_descripcion_ = i;
-			}	else if (coincidencia[2].matched) {
-				final_descripcion_ = i;
+				inicio = i;
+			}	else if (coincidencia[3].matched) {
+				final = i;
 			}
 		}	
 		i++;
 	}
-	
+	if (comprobar_descripcion) est.SetLongitudDescripcion(inicio, final);
 }

@@ -8,9 +8,13 @@
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
 
+#pragma once 
+
 #include <fstream>
 #include <regex>
 #include <string>
+
+#include "estructura.h"
 
 class Main {
   private:
@@ -18,5 +22,5 @@ class Main {
 
   public:
     Main() : patron_(R"(^\s*int\smain\s*\(.*\)\s*\{)") {}
-    void BuscarMain(std::ifstream& archivo_ent, std::ofstream& archivo_sal);
+    void BuscarMain(std::ifstream& archivo_ent, Estructura& est);
 };
