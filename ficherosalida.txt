@@ -1,39 +1,26 @@
-PROGRAM: codefibo.cc
+PROGRAM: code.cc
 DESCRIPTION:
-/**
- * Universidad de La Laguna
- * Escuela Superior de Ingeniería y Tecnología
- * Grado en Ingeniería Informática
- * Informática Básica
- * @author F. de Sande
- * @date Nov 7, 2020
- * @brief Cada nuevo término de la serie de Fibonacci se genera sumando los dos anteriores. 
- *        Comenzando con 0 y 1, los primeros 10 términos serán: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
- *        Desarrolle en C++ un programa que calcule la suma de todos los términos de valor par 
- *        de la serie que sean menores que 1000.
- * @see https://docs.google.com/document/d/1-3hTIVf8tPrbn9u0vs0Cm2IGyX1XBgv8hReVU0KOSUQ/edit?usp=sharing
- * @see stoi http://www.cplusplus.com/reference/string/stoi/
- * An Object Oriented Version of the program:
- * @see https://stackoverflow.com/questions/21360694/sum-of-even-fibonacci-numbers-under-1000
- */
+/*
+* Universidad de La Laguna
+* Escuela Superior de Ingenieria y Tecnologia
+* Informatica Basica
+* @brief Ejercicios de programacion
+* Version 1: Funcion factorial
+* @see https ://github .com /IB -2023 -2024/ IB -class -code - examples /
+*/
 
 VARIABLES:
-[Line 64] int: espana = 0
-[Line 65] double: jejejje = 9.98
+[Line 22] int: factorial = 1
+[Line 32] int: limit
 
 STATEMENTS:
-[Line 61] LOOP: while
+[Line 23] LOOP: for
+[Line 34] LOOP: for
 
 MAIN:
 True
 
 COMMENTS:
-[Line 1-18] DESCRIPTION
-[Line 25-32] COMMENT
-[Line 49-54] COMMENT
-[Line 21] // exit
-[Line 56] // Second to last term
-[Line 57] // Last term generated
-[Line 58] // New term of the serie
-[Line 59] // Accumulated sum of the terms
+[Line 1-10] DESCRIPTION
+[Line 15] // Returns the factorial of the argument
 

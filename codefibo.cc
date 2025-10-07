@@ -45,13 +45,14 @@ ha de introducir por línea de comandos para la ejecución del programa";
     exit(EXIT_SUCCESS);
   }
 }
-
+// vamos
 /** Devuelve el valor de la suma de todos los términos de valor par de la serie de
  *  Fibonacci menores que kLimit
  *
  *  @param[in] kLimit. Se suman los términos pares menores que kLimit
  *  @return La suma de los términos pares menores que kLimit
  */
+int dadsadas;
 size_t FibonacciSum(const size_t kLimit) {
   size_t second_to_last{0},  // Second to last term
            last{1},          // Last term generated
@@ -66,6 +67,6 @@ double jejejje = 9.98;
     second_to_last = last;
     last = new_term;
 	}
-int main(dsadasdasdasdsas) {
+idasdasdasdsas) {
   return sum;
 }

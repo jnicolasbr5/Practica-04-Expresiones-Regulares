@@ -26,3 +26,4 @@ void Comments::BuscarComentarios(std::ifstream& archivo_ent, Estructura& est, in
 		i++;
 	}
 }
+
