@@ -16,7 +16,7 @@
 #include "switch.h"
 #include "estructura.h"
 
-// Detecta bucles y los almacena en Estructura
+// Detecta switch y los almacena en Estructura
 void Switch::BuscarSwitch(std::ifstream& archivo_ent, Estructura& est, int i, int j) {
   std::string linea;
   std::string opcion;

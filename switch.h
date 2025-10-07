@@ -7,9 +7,9 @@
 // Autor: Juan Nicolás Becerra Rogatinscaia
 // Correo: alu0101743011@ull.edu.es
 // Fecha: 07/10/2025
-// Descripción Clase Bucle:
-// Representa una expresión regular de un bucle.
-// Verifica si el código tiene bucles y los almacena
+// Descripción Clase Switch:
+// Representa una expresión regular de un switch.
+// Verifica si el código tiene switches y los almacena
 
 #pragma once
 
