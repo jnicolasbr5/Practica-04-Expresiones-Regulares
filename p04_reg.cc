@@ -34,6 +34,7 @@
 #include "descripcion.h"
 #include "estructura.h"
 #include "main.h"
+#include "switch.h"
 #include "variable.h"
 
 void MostrarError() {
@@ -73,6 +74,9 @@ int main (int argc, char* argv[]) {
 	ReiniciarArchivo(archivo_entrada);
 	Statement bucle;
 	bucle.BuscarBucles(archivo_entrada, estructura);
+	ReiniciarArchivo(archivo_entrada);
+	Switch switchh;
+	switchh.BuscarSwitch(archivo_entrada, estructura);
 	ReiniciarArchivo(archivo_entrada);
 	Main main;
 	main.BuscarMain(archivo_entrada, estructura);

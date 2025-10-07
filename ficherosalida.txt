@@ -17,6 +17,9 @@ STATEMENTS:
 [Line 23] LOOP: for
 [Line 34] LOOP: for
 
+SWITCHS:
+[Line 17] SWITCH: Variable ->  number , Nº Casos = 2
+
 MAIN:
 True
 

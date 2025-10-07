@@ -32,6 +32,11 @@ void Estructura::Write(std::ostream& os) const {
   for (size_t i = 0; i < bucles_.size(); i++) {
     os << "[Line " << bucles_[i].linea << "] LOOP: " << bucles_[i].tipo << std::endl;
   }
+  os << "\nSWITCHS:" << std::endl;
+  for (size_t i = 0; i < switch_.size(); i++) {
+    os << "[Line " << switch_[i].linea << "] SWITCH: Variable -> " 
+        << switch_[i].opcion << ", Nº Casos = " << switch_[i].numero_casos << std::endl;
+  }
   os << "\nMAIN:" << std::endl;
   if (main_) os << "True" << std::endl;
   else os << "False" << std::endl;

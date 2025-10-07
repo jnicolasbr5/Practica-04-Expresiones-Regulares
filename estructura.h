@@ -52,6 +52,12 @@ struct DatosComentarioLargo {
   int final;
 };
 
+struct DatosSwitch {
+  int linea;
+  std::string opcion;
+  int numero_casos;
+};
+
 class Estructura {
   private:
     std::string nombre_programa_;
@@ -60,6 +66,7 @@ class Estructura {
     std::vector<DatosVariable> variables_;
     std::vector<DatosComentario> comentarios_;
     std::vector<DatosComentarioLargo> comentarios_largos_;
+    std::vector<DatosSwitch> switch_;
     InicioFinDescripcion valores_;
     bool main_;
 
@@ -72,6 +79,7 @@ class Estructura {
     void SetMain(bool condicion) {main_ = condicion;}
 
     // Push´s
+    void PushSwitch(DatosSwitch data) {switch_.push_back(data);}
     void PushBucle(DatosBucle data) {bucles_.push_back(data);}
     void PushVariable(DatosVariable data) {variables_.push_back(data);}
     void PushComentario(DatosComentario data) {comentarios_.push_back(data);}
